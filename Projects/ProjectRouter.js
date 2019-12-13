@@ -53,5 +53,37 @@ router.post('/projects', (req,res)=>{
 
 })
 
+router.get("/projects", (req,res)=>{
+    qs.getProjects()
+    .then(projs=>{
+        res.status(200).json({projs})
+    })
+    .catch(err=>{
+        res.status(500).json({err})
+    })
+})
+
+router.get('/task', (req,res)=>{
+    qs.getTasks()
+    .then(tasks=>{
+        res.status(200).json({tasks})
+    })
+    .catch(err=>{
+        res.status(500).json({err})
+    })
+})
+
+router.post("/task", (req,res)=>{
+    const body = req.body;
+    qs.addTask(body)
+    .then(task=>{
+        ConvertToTruthy(task)
+        res.status(200).json({task})
+    })
+    .catch(err=>{
+        res.status(500).json({err})
+    })
+})
+
 
 module.exports = router;
