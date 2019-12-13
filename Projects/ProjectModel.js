@@ -52,15 +52,17 @@ const addProject = (Project)=>{
 
 const getTasks = ()=>{
     return db
-    .select("*")
-    .from('Task')
+    .select("P.Name as ProjectName", "P.Description as ProjectDescription", "t.Description as TaskDesc", "t.Completed", "t.Note")
+    .from('Task as t')
+    .join(" Project as P", "t.Project_Id", "P.id")
 }
 
 const getTaskbyId = (id)=>{
     return db
-    .select("*")
-    .from("Task")
-    .where("id", id)
+    .select("P.Name as ProjectName", "P.Description as ProjectDescription", "t.Description as TaskDesc", "t.Completed", "t.Note")
+    .from("Task as t")
+    .join(" Project as P", "t.Project_Id", "P.id")
+    .where("t.id", id)
     .first()
 }
 

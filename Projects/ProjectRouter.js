@@ -6,8 +6,10 @@ function ConvertToTruthy(item){
 
     if(item.Completed === 0){
         item.Completed = "False"
+
     }else{
         item.Completed = "True"
+
     }
 }
 
@@ -56,6 +58,15 @@ router.post('/projects', (req,res)=>{
 router.get("/projects", (req,res)=>{
     qs.getProjects()
     .then(projs=>{
+        projs = projs.map(obj=>{
+            if(obj.Completed ===0){
+                obj.Completed = "False"
+                return obj
+            }else{
+                obj.Completed = "True"
+                return obj
+            }
+        })
         res.status(200).json({projs})
     })
     .catch(err=>{
@@ -66,9 +77,19 @@ router.get("/projects", (req,res)=>{
 router.get('/task', (req,res)=>{
     qs.getTasks()
     .then(tasks=>{
+        tasks = tasks.map(obj=>{
+            if(obj.Completed ===0){
+                obj.Completed = "False"
+                return obj
+            }else{
+                obj.Completed = "True"
+                return obj
+            }
+        })
         res.status(200).json({tasks})
     })
     .catch(err=>{
+        console.log(err)
         res.status(500).json({err})
     })
 })
