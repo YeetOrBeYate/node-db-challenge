@@ -1,6 +1,10 @@
 const db = require('../data/db.config.js')
 
-
+// Test Functions******************************
+const AddTransaction = (ProjectID, ResouceId)=>{
+    return db ("Project_Resource")
+    .insert([{Project_Id: ProjectID, Resource_Id: ResouceId}])
+}
 
 // Resource Functions*****************************
 
@@ -16,11 +20,11 @@ const getResourceById = (id)=>{
     .where("id", id)
     .first()
 }
-const addResource = (resource)=>{
+const addResource = (name, d, project)=>{
     return db("Resource")
-    .insert(resource, "id")
+    .insert([{Name:name, Description:d}], "id")
     .then(ids=>{
-        return getResourceById(ids[0])
+        return AddTransaction(project,ids[0])
     })
 }
 
@@ -74,12 +78,7 @@ const addTask = (task)=>{
     })
 }
 
-// Test Functions******************************
-const AddTransaction = (ProjectID, ResouceId)=>{
-    return db ("Project_Resource")
-    .insert([{Project_Id: ProjectID}, {Resource_Id:ResouceId}])
-    
-}
+
 
 
 

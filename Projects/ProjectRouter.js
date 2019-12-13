@@ -27,12 +27,11 @@ router.get('/resources', (req,res)=>{
 
 router.post('/resources', (req,res)=>{
     const name = req.body.Name;
-    const desc = req.body.Desctiption;
-    console.log(name, desc)
-    res.end()
-    const body = req.body;
+    const desc = req.body.Description;
+    const projectID = req.body.Project;
+    console.log(name, desc, projectID)
     
-    qs.addResource(body)
+    qs.addResource(name, desc, projectID)
     .then((yeet)=>{
         res.status(200).json({yeet})
     })
