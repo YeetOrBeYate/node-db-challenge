@@ -26,6 +26,7 @@ router.get('/resources', (req,res)=>{
 })
 
 router.post('/resources', (req,res)=>{
+    
     const body = req.body;
     
     qs.addResource(body)
