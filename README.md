@@ -40,12 +40,20 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
 
+-SQl is just the query language that is used to create, read, update , and delete information form a Relational Database.
+-Relational Databases are databases that have tables and those tables have relationships between them
+
 - [ ] Why do tables need a `primary key`?
+
+-Because each entry needs a unique way to access it by query
 
 - [ ] What is the name given to a table column that references the primary key on another table.
 
+-Forien Key
+
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
 
+-A Transition/Transaction table that makes the many-to-many and many-to-one-to-many configuration. It makes the database normalized
 ## Minimum Viable Product
 
 Take the steps necessary to complete the project from scratch. Start by initializing your project with a `package.json` and go from there.
